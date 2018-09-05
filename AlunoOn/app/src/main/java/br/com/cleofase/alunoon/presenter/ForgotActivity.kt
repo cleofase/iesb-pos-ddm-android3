@@ -35,7 +35,6 @@ class ForgotActivity : AppCompatActivity() {
                 Toast.makeText(this, "Ocorreu um erro ao tentar redefinir a senha!", Toast.LENGTH_LONG).show()
             }
         }
-
     }
 
     private fun isEmailValid(email: String): Boolean {

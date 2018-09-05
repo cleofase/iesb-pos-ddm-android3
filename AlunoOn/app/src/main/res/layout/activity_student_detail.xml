@@ -22,6 +22,30 @@
         app:srcCompat="@drawable/logo_iesb" />
 
     <TextView
+        android:id="@+id/lbl_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:text="Nome"
+        app:layout_constraintBottom_toTopOf="@+id/txt_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/lbl_enrolling"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/lbl_enrolling"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -69,30 +93,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/lbl_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:text="Nome"
-        app:layout_constraintBottom_toTopOf="@+id/txt_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/txt_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/lbl_enrolling"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
         android:id="@+id/lbl_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -112,6 +112,7 @@
         android:layout_marginStart="16dp"
         android:editable="false"
         android:ems="10"
+        android:enabled="false"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/btn_save"
         app:layout_constraintEnd_toEndOf="parent"
