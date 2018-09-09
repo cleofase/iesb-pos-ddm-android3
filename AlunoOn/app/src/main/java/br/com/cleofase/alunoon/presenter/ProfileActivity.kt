@@ -8,6 +8,7 @@ import android.widget.Toast
 import br.com.cleofase.alunoon.R
 import br.com.cleofase.alunoon.entity.New
 import br.com.cleofase.alunoon.entity.Student
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
