@@ -84,7 +84,9 @@ class ChatActivity : AppCompatActivity() {
                             chat.add(message)
                         }
                     }
+                    chat.sortBy { it.date.get("timestamp") as Long }
                     chatAdapter.setData(chat)
+                    chatTable.scrollToPosition(chat.lastIndex)
                 }
             }
         }
