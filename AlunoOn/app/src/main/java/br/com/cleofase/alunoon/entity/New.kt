@@ -5,5 +5,5 @@ data class New (
         var title: String = "",
         var body: String = "",
         var date: String = "",
-        var photoUrl: String = ""
+        var photo_url: String = ""
 )

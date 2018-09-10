@@ -12,7 +12,7 @@
         android:id="@+id/img_student"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        app:srcCompat="@drawable/logo_iesb" />
+        app:srcCompat="@drawable/profile_icon" />
 
     <TextView
         android:id="@+id/txt_name"
@@ -23,11 +23,4 @@
         android:text="TextView"
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/txt_unread_msg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="8dp"
-        android:text="999"
-        android:textAlignment="viewEnd" />
 </LinearLayout>

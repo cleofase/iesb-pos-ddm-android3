@@ -6,5 +6,5 @@ data class Student (
         var email: String = "",
         var enrolling: String = "",
         var phone: String = "",
-        var photoUrl: String = ""
+        var photo_url: String = ""
 )
