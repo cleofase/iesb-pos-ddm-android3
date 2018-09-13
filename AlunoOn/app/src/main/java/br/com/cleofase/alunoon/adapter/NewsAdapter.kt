@@ -1,4 +1,4 @@
-package br.com.cleofase.alunoon.view
+package br.com.cleofase.alunoon.adapter
 
 import android.content.Context
 import android.graphics.BitmapFactory
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import br.com.cleofase.alunoon.R
 import br.com.cleofase.alunoon.entity.New
+import br.com.cleofase.alunoon.view.NewViewHolder
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 

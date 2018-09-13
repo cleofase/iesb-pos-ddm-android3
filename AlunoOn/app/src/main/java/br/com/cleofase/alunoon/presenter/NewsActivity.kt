@@ -9,11 +9,10 @@ import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import br.com.cleofase.alunoon.R
 import br.com.cleofase.alunoon.entity.New
-import br.com.cleofase.alunoon.view.NewsAdapter
+import br.com.cleofase.alunoon.adapter.NewsAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_news.*
 
 class NewsActivity : AppCompatActivity() {
@@ -24,6 +23,7 @@ class NewsActivity : AppCompatActivity() {
     private var newsForStudent: MutableList<New> = mutableListOf()
     private lateinit var studentNewsTable: RecyclerView
     private lateinit var newsAdapter: NewsAdapter
+    private var studentNewsListener: ValueEventListener? = null
     val bannerImagesIndex: Array<Int> = arrayOf(R.drawable.banner_baiatodosossantos, R.drawable.banner_fortesaomarcelo, R.drawable.banner_morrosaopaulo)
 
 
@@ -44,7 +44,15 @@ class NewsActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        updateUI()
+        retrieveNewsFromCloud()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (studentNewsListener != null) {
+            newsDBRef!!.child(user!!.uid).removeEventListener(studentNewsListener)
+        }
+
     }
 
     private fun setupFirebase() {
@@ -52,10 +60,6 @@ class NewsActivity : AppCompatActivity() {
         user = auth?.currentUser
         database = FirebaseDatabase.getInstance()
         newsDBRef = database?.getReference("/student_news")
-    }
-
-    private fun updateUI() {
-        retrieveNewsFromCloud()
     }
 
     private fun retrieveNewsFromCloud() {
@@ -68,7 +72,7 @@ class NewsActivity : AppCompatActivity() {
             Toast.makeText(this@NewsActivity, "Erro obtendo dados do usuário!", Toast.LENGTH_LONG).show()
             return
         }
-        val studentNewsListener = object: ValueEventListener {
+        studentNewsListener = object: ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@NewsActivity, "Erro recuperando lista de notícias: ${error.toException()}", Toast.LENGTH_LONG).show()
             }

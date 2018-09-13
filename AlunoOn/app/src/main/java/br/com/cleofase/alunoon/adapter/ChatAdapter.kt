@@ -1,4 +1,4 @@
-package br.com.cleofase.alunoon.view
+package br.com.cleofase.alunoon.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import br.com.cleofase.alunoon.R
 import br.com.cleofase.alunoon.entity.Chat
+import br.com.cleofase.alunoon.view.HisChatViewHolder
+import br.com.cleofase.alunoon.view.MyChatViewHolder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 

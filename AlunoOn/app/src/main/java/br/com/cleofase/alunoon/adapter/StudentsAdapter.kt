@@ -1,4 +1,4 @@
-package br.com.cleofase.alunoon.view
+package br.com.cleofase.alunoon.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import br.com.cleofase.alunoon.R
 import br.com.cleofase.alunoon.entity.Student
 import br.com.cleofase.alunoon.presenter.ChatActivity
+import br.com.cleofase.alunoon.view.StudentViewHolder
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 

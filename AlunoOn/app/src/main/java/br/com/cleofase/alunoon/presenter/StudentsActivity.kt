@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import br.com.cleofase.alunoon.R
 import br.com.cleofase.alunoon.entity.Student
-import br.com.cleofase.alunoon.view.StudentsAdapter
+import br.com.cleofase.alunoon.adapter.StudentsAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*

@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import br.com.cleofase.alunoon.R
 import br.com.cleofase.alunoon.entity.Chat
-import br.com.cleofase.alunoon.view.ChatAdapter
+import br.com.cleofase.alunoon.adapter.ChatAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -25,6 +25,7 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var chatTable: RecyclerView
     private lateinit var chatAdapter: ChatAdapter
     private var studentId: String? = null
+    private var chatListener: ValueEventListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +43,13 @@ class ChatActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         updateUI()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (chatListener != null) {
+            chatDBRef!!.child(user!!.uid).child(studentId).removeEventListener(chatListener)
+        }
     }
 
     private fun setupFirebase() {
@@ -70,7 +78,7 @@ class ChatActivity : AppCompatActivity() {
             Toast.makeText(this@ChatActivity, "Erro obtendo chat!", Toast.LENGTH_LONG).show()
             return
         }
-        val chatListener = object: ValueEventListener {
+        chatListener = object: ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@ChatActivity, "Erro atualizando chat! ${error.toException()}", Toast.LENGTH_LONG).show()
             }
@@ -115,7 +123,7 @@ class ChatActivity : AppCompatActivity() {
         val message = Chat(messageId, chatMessage, studentId!!, user!!.uid, mutableMapOf(Pair("timestamp", timeStampRequest)))
         chatDBRef!!.child(user!!.uid).child(studentId).child(messageId).setValue(message)
         chatDBRef!!.child(studentId).child(user!!.uid).child(messageId).setValue(message)
-        updateUI()
+        txt_chat.text.clear()
     }
 
     private fun performLogOut() {

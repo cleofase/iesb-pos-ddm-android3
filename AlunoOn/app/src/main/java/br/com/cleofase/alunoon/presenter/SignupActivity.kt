@@ -55,7 +55,7 @@ class SignupActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             } else {
-                val resultDetail = task.result.toString()
+                val resultDetail = task.exception.toString()
                 Toast.makeText(this, "Erro no cadastro: ${resultDetail}", Toast.LENGTH_LONG).show()
             }
         }
